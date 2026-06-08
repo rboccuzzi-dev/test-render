@@ -1,8 +1,14 @@
 from sqlalchemy import create_engine, text
+import os
 
 # mysql+pymysql://usuario:password@host/db
 engine = create_engine(
-    "mysql+pymysql://root:1234@127.0.0.1/restaurante",
+    f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@{os.getenv('DB_LINK')}:{os.getenv('DB_PORT')}/restaurante",
+    connect_args={
+        "ssl": {
+            "ca": os.getenv("SSL_CERT"),
+        }
+    },
     echo=False,
     future=True
 )
