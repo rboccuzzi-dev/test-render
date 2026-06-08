@@ -65,4 +65,4 @@ app.register_blueprint(sesion_usuario_bp, url_prefix="/sesion")
 app.register_blueprint(reservas_bp, url_prefix="/reservas")
 
 if __name__ == "__main__":
-    app.run(debug=True,port=5005)
+    app.run(debug=True,host="0.0.0.0")
